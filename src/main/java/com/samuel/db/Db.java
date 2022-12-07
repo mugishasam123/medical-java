@@ -1,0 +1,32 @@
+package com.samuel.db;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.samuel.users.models.User;
+
+import lombok.Getter;
+
+@Getter
+public class Db {
+    private static Map<String, User> users = new LinkedHashMap<>();
+
+    public static void addUser(User user) {
+        if (users.get(user.getEmail()) != null) {
+            throw new RuntimeException("User already Exits");
+        }
+        users.put(user.getEmail(), user);
+    }
+
+    public static User findUser(String email) {
+        return users.get(email);
+    }
+
+    public static List<User> getUsers() {
+        return new ArrayList<>(users.values());
+    }
+
+}
+

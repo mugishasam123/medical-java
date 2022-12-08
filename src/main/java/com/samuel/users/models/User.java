@@ -1,15 +1,12 @@
 package com.samuel.users.models;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.naming.AuthenticationException;
-import io.jsonwebtoken.*;
 
 import com.google.gson.annotations.Expose;
 import com.samuel.db.Db;
+import com.samuel.utils.GenerateJwt;
 import com.samuel.utils.Message;
 import com.samuel.users.types.GenderTypes;
 import com.samuel.users.types.UserTypes;
@@ -32,7 +29,7 @@ public class User {
     private String password;
     private GenderTypes gender;
     private Integer age;
-    private UserTypes role;
+    public UserTypes role;
 
     public User() {
         id = UUID.randomUUID().toString();
@@ -43,10 +40,9 @@ public class User {
         for (int i = 0; i < this.password.length(); i++) {
             encryptedPassword = this.password.charAt(i) + encryptedPassword;
         }
-        encryptedPassword = "**" + encryptedPassword + "<>"+ this.age + "**";
+        encryptedPassword = "**" + encryptedPassword + "<>" + this.age + "**";
         this.setPassword(encryptedPassword);
     }
-    
 
     public String descrptPass() {
         String decryptedPwd = "";
@@ -61,28 +57,13 @@ public class User {
         User foundedUser = Db.findUser(email);
 
         if (foundedUser == null)
-            throw new AuthenticationException("Invalid Credentials");
-
+            throw new AuthenticationException("You entered Invalid Credentials");
 
         if (!Password.equals(foundedUser.descrptPass()))
-            throw new AuthenticationException("Invalid Credentials");
+            throw new AuthenticationException("You entered Invalid Credentials");
+        
 
-        Claims claims = Jwts.claims().setSubject(foundedUser.email);
-        claims.put("role", foundedUser.role.name());
-        claims.put("email", foundedUser.email);
-
-        Instant now = Instant.now();
-
-        String jwtToken = Jwts.builder()
-        .claim("role", foundedUser.role.name())
-        .claim("email", foundedUser.email)
-        .setSubject(foundedUser.email)
-        .setId(foundedUser.id)
-        .setIssuedAt(Date.from(now))
-        .setExpiration(Date.from(now.plus(5l, ChronoUnit.HOURS)))
-        .compact();
-
-        return new Message<String>("User login Success", jwtToken);
+        return new Message<String>("you have logged in successfully", GenerateJwt.generateJwt(foundedUser));
     }
- 
+
 }

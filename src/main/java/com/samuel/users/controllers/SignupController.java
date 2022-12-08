@@ -20,18 +20,18 @@ import com.samuel.users.models.User;
 
 @WebServlet("/register")
 public class SignupController extends HttpServlet {
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        User user = new Json().parseBodyJson(req, User.class);  
-        
+        User user = new Json().parseBodyJson(req, User.class);
+
         try {
             Message<User> results = null;
-            if (user.getRole() ==  UserTypes.ADMIN) {
+            if (user.getRole() == UserTypes.ADMIN) {
                 Admin admin = new Admin();
                 admin.fromUser(user);
                 results = admin.register();
-           }  else if (user.getRole() == UserTypes.PATIENT) {
+            } else if (user.getRole() == UserTypes.PATIENT) {
                 Patient patient = new Patient();
                 patient.fromUser(user);
                 results = patient.register();
@@ -44,14 +44,13 @@ public class SignupController extends HttpServlet {
                 physician.fromUser(user);
                 results = physician.register();
             }
-            
-            Response.send(res, results, HttpServletResponse.SC_CREATED);
 
+            Response.send(res, results, HttpServletResponse.SC_CREATED);
 
         } catch (Exception e) {
             e.printStackTrace();
             Response.send(res, new Message<>(e.getMessage(), null), HttpServletResponse.SC_BAD_REQUEST);
         }
     }
-    
+
 }

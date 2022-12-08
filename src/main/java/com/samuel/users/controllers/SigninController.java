@@ -1,8 +1,6 @@
 package com.samuel.users.controllers;
 
-
 import java.io.IOException;
-
 import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -11,13 +11,11 @@ public class Admin extends User implements IUser {
         if (!Pattern.matches("^\\d{10}$", getPassword())) {
             throw new Exception("Password must be 10 digits");
         }
-
-
         encrptPass();
         Db.addUser(this);
-
         return new Message<User>("Admin success", Db.findUser(getEmail()));
     }
+
     public void fromUser(User user) {
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
@@ -28,4 +26,3 @@ public class Admin extends User implements IUser {
         setGender(user.getGender());
     }
 }
-

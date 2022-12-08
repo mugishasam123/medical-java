@@ -11,8 +11,6 @@ public class Patient extends User implements IUser {
         if (!Pattern.matches("^\\d{6}$", getPassword())) {
             throw new Exception("Password must be 6 digits");
         }
-
-
         encrptPass();
         Db.addUser(this);
 
@@ -30,4 +28,3 @@ public class Patient extends User implements IUser {
         setGender(user.getGender());
     }
 }
-

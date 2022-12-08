@@ -20,5 +20,6 @@ public class Response {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }    
+    }
+
 }

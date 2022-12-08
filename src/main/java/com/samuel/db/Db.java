@@ -25,8 +25,7 @@ public class Db {
     }
 
     public static List<User> getUsers() {
-        return new ArrayList<>(users.values());
+        return new ArrayList<User>(users.values());
     }
 
 }
-

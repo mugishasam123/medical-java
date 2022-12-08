@@ -23,8 +23,8 @@ public class Main extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
-

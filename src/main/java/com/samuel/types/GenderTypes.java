@@ -1,4 +1,4 @@
-package com.samuel.users.types;
+package com.samuel.types;
 
 public enum GenderTypes {
     MALE, FEMALE

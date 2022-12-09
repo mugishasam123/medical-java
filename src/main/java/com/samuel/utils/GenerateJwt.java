@@ -8,7 +8,7 @@ import java.util.Date;
 
 import javax.crypto.spec.SecretKeySpec;
 
-import com.samuel.users.models.User;
+import com.samuel.models.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -1,4 +1,4 @@
-package com.samuel.users.models;
+package com.samuel.models;
 
 import java.util.UUID;
 
@@ -8,8 +8,8 @@ import com.google.gson.annotations.Expose;
 import com.samuel.db.Db;
 import com.samuel.utils.GenerateJwt;
 import com.samuel.utils.Message;
-import com.samuel.users.types.GenderTypes;
-import com.samuel.users.types.UserTypes;
+import com.samuel.types.GenderTypes;
+import com.samuel.types.UserTypes;
 
 import lombok.Getter;
 import lombok.NonNull;

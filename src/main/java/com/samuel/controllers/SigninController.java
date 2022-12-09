@@ -1,4 +1,4 @@
-package com.samuel.users.controllers;
+package com.samuel.controllers;
 
 import java.io.IOException;
 import javax.naming.AuthenticationException;
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.samuel.models.User;
 import com.samuel.utils.Json;
 import com.samuel.utils.Message;
 import com.samuel.utils.Response;
-import com.samuel.users.models.User;
 
 @WebServlet("/login")
 public class SigninController extends HttpServlet {

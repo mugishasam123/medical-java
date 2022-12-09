@@ -1,21 +1,24 @@
-package com.samuel.users.models;
+package com.samuel.models;
 
 import java.util.regex.Pattern;
+
 import com.samuel.utils.Message;
 import com.samuel.db.Db;
-import com.samuel.users.interfaces.IUser;
+import com.samuel.interfaces.IUser;
 
-public class Admin extends User implements IUser {
+public class Physician extends User implements IUser {
     @Override
     public Message<User> register() throws Exception {
-        if (!Pattern.matches("^\\d{10}$", getPassword())) {
-            throw new Exception("Password must be 10 digits");
+        if (!Pattern.matches("^\\d{8}$", getPassword())) {
+            throw new Exception("Password must be 8 digits");
         }
         encrptPass();
         Db.addUser(this);
-        return new Message<User>("You been registered as admin successfully", Db.findUser(getEmail()));
+
+        return new Message<User>("You been registered as physician successfully", Db.findUser(getEmail()));
     }
 
+    @Override
     public void fromUser(User user) {
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());

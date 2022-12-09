@@ -1,4 +1,4 @@
-package com.samuel.users.controllers;
+package com.samuel.controllers;
 
 import java.io.IOException;
 
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.samuel.utils.Message;
 import com.samuel.utils.Json;
 import com.samuel.utils.Response;
-import com.samuel.users.types.UserTypes;
-import com.samuel.users.models.Admin;
-import com.samuel.users.models.Patient;
-import com.samuel.users.models.Pharmacist;
-import com.samuel.users.models.Physician;
-import com.samuel.users.models.User;
+import com.samuel.types.UserTypes;
+import com.samuel.models.Admin;
+import com.samuel.models.Patient;
+import com.samuel.models.Pharmacist;
+import com.samuel.models.Physician;
+import com.samuel.models.User;
 
 @WebServlet("/register")
 public class SignupController extends HttpServlet {

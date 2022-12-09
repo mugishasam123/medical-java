@@ -1,7 +1,7 @@
-package com.samuel.users.interfaces;
+package com.samuel.interfaces;
 
 import com.samuel.utils.Message;
-import com.samuel.users.models.User;
+import com.samuel.models.User;
 
 public interface IUser {
   public abstract Message<User> register() throws Exception;

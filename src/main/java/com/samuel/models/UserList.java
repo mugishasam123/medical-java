@@ -1,10 +1,10 @@
-package com.samuel.users.models;
+package com.samuel.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.samuel.db.Db;
-import com.samuel.users.types.UserTypes;
+import com.samuel.types.UserTypes;
 
 public class UserList {
 

@@ -1,4 +1,4 @@
-package com.samuel.users.controllers;
+package com.samuel.controllers;
 
 import java.io.IOException;
 

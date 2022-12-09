@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONObject;
 
-import com.samuel.users.models.UserList;
+import com.samuel.models.UserList;
 
 public class Excel2Json {
 

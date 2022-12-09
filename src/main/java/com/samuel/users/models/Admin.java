@@ -13,7 +13,7 @@ public class Admin extends User implements IUser {
         }
         encrptPass();
         Db.addUser(this);
-        return new Message<User>("Admin success", Db.findUser(getEmail()));
+        return new Message<User>("You been registered as admin successfully", Db.findUser(getEmail()));
     }
 
     public void fromUser(User user) {

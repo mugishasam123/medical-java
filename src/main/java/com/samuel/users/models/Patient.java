@@ -14,7 +14,7 @@ public class Patient extends User implements IUser {
         encrptPass();
         Db.addUser(this);
 
-        return new Message<User>("Patient success", Db.findUser(getEmail()));
+        return new Message<User>("You been registered as patient successfully", Db.findUser(getEmail()));
     }
 
     @Override

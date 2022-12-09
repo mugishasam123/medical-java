@@ -40,13 +40,13 @@ public class User {
         for (int i = 0; i < this.password.length(); i++) {
             encryptedPassword = this.password.charAt(i) + encryptedPassword;
         }
-        encryptedPassword = "**" + encryptedPassword + "<>" + this.age + "**";
+        encryptedPassword = "**" + encryptedPassword + "</>*" + this.role + "**";
         this.setPassword(encryptedPassword);
     }
 
     public String descrptPass() {
         String decryptedPwd = "";
-        String reversedPwd = this.password.substring(2, this.password.length() - 2).split("<>")[0];
+        String reversedPwd = this.password.substring(2, this.password.length() - 2).split("</>*")[0];
         for (int i = 0; i < reversedPwd.length(); i++) {
             decryptedPwd = reversedPwd.charAt(i) + decryptedPwd;
         }

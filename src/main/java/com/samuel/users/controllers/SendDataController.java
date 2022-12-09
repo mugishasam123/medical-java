@@ -23,10 +23,15 @@ public class SendDataController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        final String authorizationHeaderValue = req.getHeader("Authorization");
-        String token = authorizationHeaderValue.substring(7, authorizationHeaderValue.length());
 
         try {
+            final String authorizationHeaderValue = req.getHeader("Authorization");
+            String token = null;
+            if (authorizationHeaderValue == null) {
+                throw new Exception("jwt token is required");
+            }
+            token = authorizationHeaderValue.substring(7, authorizationHeaderValue.length());
+
             Message<JSONObject> results = null;
             Jws<Claims> claims = ParseJwt.parseJwt(token);
             String userRole = (String) claims.getBody().get("role");

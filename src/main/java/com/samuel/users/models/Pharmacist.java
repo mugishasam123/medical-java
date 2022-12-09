@@ -15,7 +15,7 @@ public class Pharmacist extends User implements IUser {
         encrptPass();
         Db.addUser(this);
 
-        return new Message<User>("Pharmacists  success", Db.findUser(getEmail()));
+        return new Message<User>("You been registered as pharmacist successfully", Db.findUser(getEmail()));
     }
 
     @Override

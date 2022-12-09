@@ -31,7 +31,7 @@ public class SendDataController extends HttpServlet {
                 throw new Exception("jwt token is required");
             }
             token = authorizationHeaderValue.substring(7, authorizationHeaderValue.length());
-
+            System.out.println(token);
             Message<JSONObject> results = null;
             Jws<Claims> claims = ParseJwt.parseJwt(token);
             String userRole = (String) claims.getBody().get("role");
@@ -39,23 +39,23 @@ public class SendDataController extends HttpServlet {
             System.out.println(userRole);
 
             if (userRole.equals("ADMIN")) {
-                results = Excel2Json.AdminData(fileName, 3);
+                results = Excel2Json.AdminData(fileName, 3,"ADMIN");
                 System.out.println(results);
             } else if (userRole.equals("PATIENT")) {
-                results = Excel2Json.usersData(fileName, 0);
+                results = Excel2Json.usersData(fileName, 0,"PATIENT");
                 System.out.println(results);
             } else if (userRole.equals("PHYSICIAN")) {
-                results = Excel2Json.usersData(fileName, 1);
+                results = Excel2Json.usersData(fileName, 1,"PHYSICIAN");
                 System.out.println(results);
             } else if (userRole.equals("PHARMACIST")) {
-                results = Excel2Json.usersData(fileName, 2);
+                results = Excel2Json.usersData(fileName, 2,"PHARMACIST");
                 System.out.println(results);
             }
 
             Response.send(res, results, HttpServletResponse.SC_OK);
         } catch (Exception e) {
             e.printStackTrace();
-            Response.send(res, new Message<>(e.getMessage(), null), HttpServletResponse.SC_BAD_REQUEST);
+            Response.send(res, new Message<>("You are not authorized", null), HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 

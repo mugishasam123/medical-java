@@ -23,7 +23,7 @@ public class SigninController extends HttpServlet {
             Response.send(res, result, HttpServletResponse.SC_OK);
         } catch (AuthenticationException e) {
             e.printStackTrace();
-            Response.send(res, new Message<>(e.getMessage(), null), HttpServletResponse.SC_FORBIDDEN);
+            Response.send(res, new Message<>(e.getMessage(), null), HttpServletResponse.SC_UNAUTHORIZED);
         } catch (Exception e) {
             e.printStackTrace();
         }

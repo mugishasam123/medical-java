@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
 
 public class ExcelConvert {
 
-	public static JSONObject excelConvert(String filePath, int index) {
+	public static JSONObject excelConvert(String filePath, int index,String role) {
 		try {
 			FileInputStream excelFile = new FileInputStream(new File(filePath));
 			XSSFWorkbook workBook = new XSSFWorkbook(excelFile);
@@ -32,6 +32,7 @@ public class ExcelConvert {
 			}
 			workBook.close();
 			JSONObject sheetObject = new JSONObject();
+			sheetObject.put("role", role);
 			sheetObject.put("sheetName", sheetName);
 			sheetObject.put("data", dataList);
 

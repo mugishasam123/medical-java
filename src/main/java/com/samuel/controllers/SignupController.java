@@ -29,19 +29,19 @@ public class SignupController extends HttpServlet {
             ApiResponse<User> results = null;
             if (user.getRole() == UserTypes.ADMIN) {
                 Admin admin = new Admin();
-                admin.fromUser(user);
+                admin.createUser(user);
                 results = admin.register();
             } else if (user.getRole() == UserTypes.PATIENT) {
                 Patient patient = new Patient();
-                patient.fromUser(user);
+                patient.createUser(user);
                 results = patient.register();
             } else if (user.getRole() == UserTypes.PHARMACIST) {
                 Pharmacist pharmacist = new Pharmacist();
-                pharmacist.fromUser(user);
+                pharmacist.createUser(user);
                 results = pharmacist.register();
             } else if (user.getRole() == UserTypes.PHYSICIAN) {
                 Physician physician = new Physician();
-                physician.fromUser(user);
+                physician.createUser(user);
                 results = physician.register();
             }
 

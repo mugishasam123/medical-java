@@ -18,7 +18,7 @@ public class Pharmacist extends User {
     }
 
     @Override
-    public void fromUser(User user) {
+    public void createUser(User user) {
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
         setAge(user.getAge());

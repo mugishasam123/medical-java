@@ -15,7 +15,7 @@ public class Admin extends User {
         return new ApiResponse<User>("You been registered as admin successfully", Database.findUser(getEmail()));
     }
 
-    public void fromUser(User user) {
+    public void createUser(User user) {
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
         setAge(user.getAge());

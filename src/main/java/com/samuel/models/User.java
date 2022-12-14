@@ -37,7 +37,7 @@ public abstract class User {
 
     public abstract ApiResponse<User> register() throws Exception;
 
-    public abstract void fromUser(User user);
+    public abstract void createUser(User user);
 
     public void encrptPass() {
         String encryptedPassword = "";

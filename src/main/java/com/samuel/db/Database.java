@@ -10,7 +10,7 @@ import com.samuel.models.User;
 import lombok.Getter;
 
 @Getter
-public class Db {
+public class Database {
     private static Map<String, User> users = new LinkedHashMap<>();
 
     public static void addUser(User user) {

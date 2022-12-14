@@ -5,9 +5,9 @@ import java.util.UUID;
 import javax.naming.AuthenticationException;
 
 import com.google.gson.annotations.Expose;
-import com.samuel.db.Db;
+import com.samuel.db.Database;
 import com.samuel.utils.GenerateJwt;
-import com.samuel.utils.Message;
+import com.samuel.utils.ApiResponse;
 import com.samuel.types.GenderTypes;
 import com.samuel.types.UserTypes;
 
@@ -17,7 +17,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class User {
+public abstract class User {
     public String id;
     @NonNull
     public String email;
@@ -35,6 +35,10 @@ public class User {
         id = UUID.randomUUID().toString();
     }
 
+    public abstract ApiResponse<User> register() throws Exception;
+
+    public abstract void fromUser(User user);
+
     public void encrptPass() {
         String encryptedPassword = "";
         for (int i = 0; i < this.password.length(); i++) {
@@ -44,7 +48,7 @@ public class User {
         this.setPassword(encryptedPassword);
     }
 
-    public String descrptPass() {
+    public String decrptPass() {
         String decryptedPwd = "";
         String reversedPwd = this.password.substring(2, this.password.length() - 2).split("</>*")[0];
         for (int i = 0; i < reversedPwd.length(); i++) {
@@ -53,17 +57,16 @@ public class User {
         return decryptedPwd;
     }
 
-    public Message<String> login(String email, String Password) throws Exception {
-        User foundedUser = Db.findUser(email);
+    public ApiResponse<String> login(String email, String Password) throws Exception {
+        User foundedUser = Database.findUser(email);
 
         if (foundedUser == null)
             throw new AuthenticationException("You entered Invalid Credentials");
 
-        if (!Password.equals(foundedUser.descrptPass()))
+        if (!Password.equals(foundedUser.decrptPass()))
             throw new AuthenticationException("You entered Invalid Credentials");
-        
 
-        return new Message<String>("you have logged in successfully", GenerateJwt.generateJwt(foundedUser));
+        return new ApiResponse<String>("you have logged in successfully", GenerateJwt.generateJwt(foundedUser));
     }
 
 }

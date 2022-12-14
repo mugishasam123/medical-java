@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Response {
 
-    public static void send(HttpServletResponse res, Message payload, int status) {
+    public static void send(HttpServletResponse res, ApiResponse payload, int status) {
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
         try {

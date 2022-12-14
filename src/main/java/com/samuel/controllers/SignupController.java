@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.samuel.utils.Message;
+import com.samuel.utils.ApiResponse;
 import com.samuel.utils.Json;
 import com.samuel.utils.Response;
 import com.samuel.types.UserTypes;
@@ -23,10 +23,10 @@ public class SignupController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        User user = new Json().parseBodyJson(req, User.class);
+        User user = new Json().parseBodyJson(req, Admin.class);
 
         try {
-            Message<User> results = null;
+            ApiResponse<User> results = null;
             if (user.getRole() == UserTypes.ADMIN) {
                 Admin admin = new Admin();
                 admin.fromUser(user);
@@ -49,7 +49,7 @@ public class SignupController extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Response.send(res, new Message<>(e.getMessage(), null), HttpServletResponse.SC_BAD_REQUEST);
+            Response.send(res, new ApiResponse<>(e.getMessage(), null), HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 

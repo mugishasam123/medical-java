@@ -46,7 +46,7 @@ To get a local copy up and running follow these simple example steps.
 
 ```bash
 $ git clone https://github.com/mugishasam123/medical-java.git
-$ cd Stock-metrics
+$ cd medical-java
 ```
 
 #### Run project

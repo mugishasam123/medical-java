@@ -3,7 +3,7 @@
 
 # meda-app
 
-> meda app  is an app that allows different medical staffs,like physician,pharmacist etc to see medical records accord to their medical roles while an admin can manage all data .It is built with react and redux .
+> meda app  is an app that allows different medical staffs,like physician,pharmacist etc to see medical records accord to their medical roles while an admin can manage all data .
 
 <br/>
 

@@ -11,9 +11,6 @@
 
 Additional description about the project and its features.
 
-[link to express gateway repo](https://github.com/mugishasam123/medical-express)
-
-[link to react frontend repo](https://github.com/mugishasam123/medical-react)
 
 ## Built With
 
